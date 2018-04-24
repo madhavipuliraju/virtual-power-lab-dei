@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html >
 <head><title>Virtual Labs - DEI</title>
@@ -8,6 +7,7 @@
 var ans = new Array;
 var done = new Array;
 var score = 0;
+var count_ques = 0;
 var tot_ques=10;
 ans[1]='a';
 ans[2]='a';
@@ -22,8 +22,9 @@ ans[10]='d';
 function Engine(question, answer) {
         if (answer != ans[question]) {
                 if (!done[question]) {
-                       done[question] = -1;
+                        done[question] = -1;
                         alert('Wrong!    The right answer is    ' + ans[question]);
+						count_ques++;
                        }
                else {
                        alert('You have already answered that!');
@@ -34,10 +35,7 @@ function Engine(question, answer) {
                        done[question] = -1;
                        score++;
                        alert('Correct!     Great!' );
-
-			
-				
-
+					   count_ques++;
                        }
                else {
                        alert('You have already answered that!');
@@ -45,11 +43,15 @@ function Engine(question, answer) {
                }
 }
 function Test_result() {
-        if (score == tot_ques) {
+        if(count_ques < tot_ques)
+			{
+			alert("Please solve all questions!");
+			}
+        else if (score == tot_ques) {
                 alert('Oh!  You got full points!');
                 }
         else {
-                alert('You got ' + score + ' point(s) out of ' + tot_ques + ' questions.')
+                alert('You got ' + score + ' point(s) out of ' + tot_ques + ' questions.');
                 }
 }
 //-->
@@ -69,7 +71,7 @@ function Test_result() {
 			<li><a href="../Dreamweaver/measurement.html">Measurements</a></li>
 			<li><a href="../Dreamweaver/char.html">Charactristics</a></li>
 			<li><a href="../Dreamweaver/safety.html">LAB Safety</a></li>
-                        <li><a href="../Dreamweaver/feedback.html">Feedback</a></li>			
+                        <li><a href="../Dreamweaver/feedback.php">Feedback</a></li>			
                         <li><a href="../Dreamweaver/lab.html">DEI PowerLab</a></li>
 						 
 		</ul>
@@ -88,13 +90,13 @@ function Test_result() {
 <div class="nob">
 <form>
 <ol class="boldlist">
-<li>The value of X<sub>d</sub>” for 2 pole Turbo alternator  in the range of: </li>
+<li>The value of X<sub>d</sub>&Prime; for 2 pole Turbo alternator  in the range of: </li>
 <ul><input type=radio value='a' onClick='Engine(1, this.value)'>0.07 to 0.12<br>
 <input type=radio value='b' onClick='Engine(1, this.value)'>0.1 to 0.5 <br>
 <input type=radio value='c' onClick='Engine(1, this.value)'>1 to 5 <br>
 <input type=radio value='d' onClick='Engine(1, this.value)'>0.7 to 1.8<br><br><br></ul>
 
-<li>The value of X<sub>d</sub>” for water wheel alternators in the range of:</li>
+<li>The value of X<sub>d</sub>&Prime; for water wheel alternators in the range of:</li>
 <ul><input type=radio value='a' onClick='Engine(2, this.value)'>0.1 to 0.35<br>
 <input type=radio value='b' onClick='Engine(2, this.value)'>1 to 3.5<br>
 <input type=radio value='c' onClick='Engine(2, this.value)'>0.07 to 0.12<br>
@@ -102,9 +104,9 @@ function Test_result() {
 
 
 <li>Which statement is correct just after fault:</li>
-<ul><input type=radio value='a' onClick='Engine(3, this.value)'>X<sub>d</sub>”= X<sub>d</sub>’= X<sub>d</sub><br>
-<input type=radio value='b' onClick='Engine(3, this.value)'>X<sub>d</sub>” < X<sub>d</sub>’< X<sub>d</sub><br>
-<input type=radio value='c' onClick='Engine(3, this.value)'>X<sub>d</sub>” >X<sub>d</sub>’ >X<sub>d</sub><br>
+<ul><input type=radio value='a' onClick='Engine(3, this.value)'>X<sub>d</sub>&Prime;= X<sub>d</sub>&prime;= X<sub>d</sub><br>
+<input type=radio value='b' onClick='Engine(3, this.value)'>X<sub>d</sub>&Prime; < X<sub>d</sub>&prime;< X<sub>d</sub><br>
+<input type=radio value='c' onClick='Engine(3, this.value)'>X<sub>d</sub>&Prime; >X<sub>d</sub>&prime; >X<sub>d</sub><br>
 <input type=radio value='d' onClick='Engine(3, this.value)'>None of these<br><br><br></ul>
 
 
@@ -136,7 +138,7 @@ function Test_result() {
 <input type=radio value='d' onClick='Engine(7, this.value)'>None of the above<br><br><br></ul>
 
 
-<li>If &theta; &asymp; 90° and  	&alpha;= 0, then maximum momentary current (i<sub>mm</sub>) will be:</li>
+<li>If &theta; &asymp; 90 degree and  	&alpha;= 0, then maximum momentary current (i<sub>mm</sub>) will be:</li>
 <ul><input type=radio value='a' onClick='Engine(8, this.value)'>Half the maximum of symmetrical short circuit current<br>
 <input type=radio value='b' onClick='Engine(8, this.value)'>Equal to the maximum of symmetrical short circuit current<br>
 <input type=radio value='c' onClick='Engine(8, this.value)'>Four times to the maximum of symmetrical short circuit current<br>
@@ -151,10 +153,10 @@ function Test_result() {
 
 
 <li>The effective value of transient reactance when there is no damping current:</li>
-<ul><input type=radio value='a' onClick='Engine(10, this.value)'>X<sub>d</sub>’ = X<sub>L</sub> + X<sub>a</sub><br>
-<input type=radio value='b' onClick='Engine(10, this.value)'>X<sub>d</sub>’ = X<sub>L</sub> + X<sub>f</sub><br>
-<input type=radio value='c' onClick='Engine(10, this.value)'>X<sub>d</sub>’ = X<sub>L</sub><br>
-<input type=radio value='d' onClick='Engine(10, this.value)'>X<sub>d</sub>’ = X<sub>L</sub> + (X<sub>a</sub> || X<sub>f</sub>)<br><br><br></ul>
+<ul><input type=radio value='a' onClick='Engine(10, this.value)'>X<sub>d</sub>&prime; = X<sub>L</sub> + X<sub>a</sub><br>
+<input type=radio value='b' onClick='Engine(10, this.value)'>X<sub>d</sub>&prime; = X<sub>L</sub> + X<sub>f</sub><br>
+<input type=radio value='c' onClick='Engine(10, this.value)'>X<sub>d</sub>&prime; = X<sub>L</sub><br>
+<input type=radio value='d' onClick='Engine(10, this.value)'>X<sub>d</sub>&prime; = X<sub>L</sub> + (X<sub>a</sub> || X<sub>f</sub>)<br><br><br></ul>
 </ol>
 
 
@@ -186,7 +188,6 @@ function Test_result() {
 			<li><a href="../Dreamweaver/sim8.html">Simualtion</a></li>
 			<li><a href="../Dreamweaver/video 8.html">Videos of Exp.8</a></li>
             <li><a href="../Dreamweaver/quiz8.html">Quiz</a></li>
-			<li><a href="../Dreamweaver/feedback8.html">Feedback</a></li>
 </ul></div>
 		<!-- end #sidebar -->
               
